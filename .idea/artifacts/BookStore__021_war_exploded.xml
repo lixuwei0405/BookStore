@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="BookStore__021:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/BookStore__021_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="BookStore__021" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="module" name="commons-beanutils-1.7.0" module-name="BookStore__021" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="BookStore__021/web/Web" />
+    </root>
+  </artifact>
+</component>

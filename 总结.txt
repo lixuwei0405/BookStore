@@ -1,0 +1,35 @@
+MVC开发模式
+    Model 数据实体   pojo,entity,bean...
+    view  视图  可与用户交互的  jsp、html
+    Controller 控制层  控制实体 改变视图 用于接收处理响应请求  controller
+
+三层架构
+    Dao  数据访问层  用于和数据库交互的层次
+    Service 业务逻辑层 用于处理大量需求任务的层
+    Controller 用于接收处理响应请求的层
+
+JSP常用的三大指令  基本格式：<%@ %>
+    page  用于配置页面  例如:<%@page 属性值1=""...%>
+    include 用于嵌入引入其他页面内容 例如:<%@include file="目标页面"%>
+    taglib 用于引入第三方库  例如:<%@taglib uri="JSTL标签库"%>
+
+jsp中也可以使用java代码块
+    //给当前jsp(servlet)的service方法创建一个局部变量
+    <% java代码%>
+    //在当前service方法中输出目标attr
+    <%= java代码%>
+    //在当前的Servlet中定义一个成员变量
+    <%! java代码%>
+
+jsp中九大内置对象
+    request  用于获得请求，可获得当前web应用的名称
+    response 用于相应内容，可获得输出流
+    application 代表当前web应用，一个tomcat只维护一个
+    Pagecontext  当前页面范围  可以设置获取 attr
+    session 代表一次会话，只要当前浏览器不关闭，依然会保存 sessionId
+
+    out 输出对象
+    page 类似于this,代表当前页面
+    config 当前servlet的配置信息 (初始化参数)
+    exception 异常对象
+
