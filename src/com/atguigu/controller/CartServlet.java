@@ -41,12 +41,9 @@ public class CartServlet extends BaseServlet {
     }
     protected void clearCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cart cart = (Cart) request.getSession().getAttribute("cart");
-        if(cart!=null){
             cart.clearCart();
-        }else {
 //            response.sendRedirect(request.getContextPath()+"/pages/cart/cart.jsp");
             response.sendRedirect(request.getContextPath()+"/cart?action=showCart");
-        }
     }
     protected void deleteItemCast(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
