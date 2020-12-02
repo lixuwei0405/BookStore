@@ -6,31 +6,32 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../../static/css/minireset.css" />
-    <link rel="stylesheet" href="../../static/css/common.css" />
-    <link rel="stylesheet" href="../../static/css/cart.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/static/css/minireset.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/static/css/common.css" />
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/static/css/cart.css" />
 </head>
 <body>
 <div class="header">
     <div class="w">
         <div class="header-left">
-            <a href="../../index.html">
-                <img src="../../static/img/logo.gif" alt=""
+            <a href="<%=request.getContextPath()%>/book?action=getPageBookFront&pageNo=1">
+                <img src="<%= request.getContextPath()%>/static/img/logo.gif" alt=""
                 /></a>
             <h1>我的购物车</h1>
         </div>
         <div class="header-right">
             <h3>欢迎<span>张总</span>光临尚硅谷书城</h3>
             <div class="order"><a href="../order/order.html">我的订单</a></div>
-            <div class="destory"><a href="../../index.html">注销</a></div>
+            <div class="destory"><a href="<%= request.getContextPath()%>/index.html">注销</a></div>
             <div class="gohome">
-                <a href="../../index.html">返回</a>
+                <a href="<%= request.getContextPath()%>/main.jsp">返回</a>
             </div>
         </div>
     </div>
@@ -50,94 +51,35 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>
-                    <img src="../../static/uploads/huozhe.jpg" alt="" />
-                </td>
-                <td>活着</td>
-                <td>
-                    <span class="count">-</span>
-                    <input class="count-num" type="text" value="1" />
-                    <span class="count">+</span>
-                </td>
-                <td>36.8</td>
-                <td>36.8</td>
-                <td><a href="">删除</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="../../static/uploads/kanjian.jpg" alt="" />
-                </td>
-                <td>看见</td>
-                <td>
-                    <span class="count">-</span>
-                    <input class="count-num" type="text" value="1" />
-                    <span class="count">+</span>
-                </td>
-                <td>40.1</td>
-                <td>40.1</td>
-                <td><a href="">删除</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="../../static/uploads/kanjian.jpg" alt="" />
-                </td>
-                <td>
-                    假如书名太长了,只展示一部分书名.自动展示省略号
-                </td>
-                <td>
-                    <span class="count">-</span>
-                    <input class="count-num" type="text" value="1" />
-                    <span class="count">+</span>
-                </td>
-                <td>40.1</td>
-                <td>40.1</td>
-                <td><a href="">删除</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="../../static/uploads/kanjian.jpg" alt="" />
-                </td>
-                <td>
-                    假如书名太长了,只展示一部分书名.自动展示省略号
-                </td>
-                <td>
-                    <!-- <div> -->
-                    <span class="count">-</span>
-                    <input class="count-num" type="text" value="100" />
-                    <span class="count">+</span>
-                    <!-- </div> -->
-                </td>
-                <td>40.1</td>
-                <td>40.1</td>
-                <td><a href="">删除</a></td>
-            </tr>
-            <tr>
-                <td>
-                    <img src="../../static/uploads/kanjian.jpg" alt="" />
-                </td>
-                <td>
-                    假如书名太长了,只展示一部分书名.自动展示省略号
-                </td>
-                <td>
-                    <span class="count">-</span>
-                    <input class="count-num" type="text" value="99" />
-                    <span class="count">+</span>
-                </td>
-                <td>40.1</td>
-                <td>40.1</td>
-                <td><a href="">删除</a></td>
-            </tr>
+            <c:forEach items="${sessionScope.cart.cartItems}" var="item">
+                <tr>
+                    <td>
+                        <img src="<%= request.getContextPath()%>/static/uploads/huozhe.jpg" alt="" />
+                    </td>
+                    <td>${item.book.title}</td>
+                    <td>
+<%--                        <span class="count">-</span>--%>
+<%--                        <input class="count-num" type="text" value="1" />--%>
+<%--                        <span class="count">+</span>--%>
+                        ${item.bookNum}
+                    </td>
+                    <td>${item.book.price}</td>
+                    <td>${item.amount}</td>
+                    <td><a href="${pageContext.request.contextPath}/cart?action=deleteItemCast&id=${item.book.id}">删除</a></td>
+                </tr>
+            </c:forEach>
+
+
             </tbody>
         </table>
         <div class="footer">
             <div class="footer-left">
-                <a href="#" class="clear-cart">清空购物车</a>
-                <a href="#">继续购物</a>
+                <a href="${pageContext.request.contextPath}/cart?action=clearCart" class="clear-cart" >清空购物车</a>
+                <a href="${pageContext.request.contextPath}/book?action=getPageBookFront&pageNo=1">继续购物</a>
             </div>
             <div class="footer-right">
-                <div>共<span>3</span>件商品</div>
-                <div class="total-price">总金额<span>99.9</span>元</div>
+                <div>共<span>${sessionScope.cart.totalCount}</span>件商品</div>
+                <div class="total-price">总金额<span>${sessionScope.cart.totalAmount}</span>元</div>
                 <a class="pay" href="checkout.html">去结账</a>
             </div>
         </div>
@@ -149,19 +91,19 @@
             <ul>
                 <li>
                     <a href="">
-                        <img src="../../static/img/bottom1.png" alt="" />
+                        <img src="<%= request.getContextPath()%>/static/img/bottom1.png" alt="" />
                         <span>大咖级讲师亲自授课</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="../../static/img/bottom.png" alt="" />
+                        <img src="<%= request.getContextPath()%>/static/img/bottom.png" alt="" />
                         <span>课程为学员成长持续赋能</span>
                     </a>
                 </li>
                 <li>
                     <a href="">
-                        <img src="../../static/img/bottom2.png" alt="" />
+                        <img src="<%= request.getContextPath()%>/static/img/bottom2.png" alt="" />
                         <span>学员真是情况大公开</span>
                     </a>
                 </li>

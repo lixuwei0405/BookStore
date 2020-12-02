@@ -105,4 +105,14 @@ public class BookServlet extends BaseServlet {
         request.getRequestDispatcher("/pages/manager/book_manager.jsp").forward(request,response);
     }
 
+    protected void getPageBookFront(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //获取当前页pageNo
+        String str = request.getParameter("pageNo");
+        String title = request.getParameter("title");
+        int pageNo = Integer.parseInt(str);
+        PageBean<Book> pagebean = bookService.findPageBookCondition(pageNo,title);
+        request.setAttribute("pageBean",pagebean);
+        request.setAttribute("title",title);
+        request.getRequestDispatcher("/main.jsp").forward(request,response);
+    }
 }
