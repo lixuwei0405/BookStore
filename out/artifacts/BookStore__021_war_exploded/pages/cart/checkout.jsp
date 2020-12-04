@@ -11,10 +11,10 @@
 <head>
     <meta charset="UTF-8">
     <title>结算页面</title>
-    <link type="text/css" rel="stylesheet" href="../../static/css/style.css" >
-    <link rel="stylesheet" href="../../static/css/minireset.css" />
-    <link rel="stylesheet" href="../../static/css/common.css" />
-    <link rel="stylesheet" href="../../static/css/cart.css" />
+    <link type="text/css" rel="stylesheet" href="<%=request.getContextPath()%>/static/css/style.css" >
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/minireset.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/common.css" />
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/static/css/cart.css" />
     <style type="text/css">
         h1 {
             text-align: center;
@@ -30,36 +30,36 @@
 <body>
 
 <!--	<div id="header">-->
-<!--			<img class="logo_img" alt="" src="../../static/img/logo.gif" >-->
+<!--			<img class="logo_img" alt="" src="<%=request.getContextPath()%>/static/img/logo.gif" >-->
 <!--			<span class="wel_word">结算</span>-->
 <!--			<div>-->
 <!--				<span>欢迎<span class="um_span">张总</span>光临尚硅谷书城</span>-->
 <!--				<a href="../order/order.html">我的订单</a>-->
-<!--				<a href="../../index.html">注销</a>&nbsp;&nbsp;-->
-<!--				<a href="../../index.html">返回</a>-->
+<!--				<a href="<%=request.getContextPath()%>/index.html">注销</a>&nbsp;&nbsp;-->
+<!--				<a href="<%=request.getContextPath()%>/index.html">返回</a>-->
 <!--			</div>-->
 <!--	</div>-->
 <div class="header">
     <div class="w">
         <div class="header-left">
-            <a href="../../index.html">
-                <img src="../../static/img/logo.gif" alt=""
+            <a href="<%=request.getContextPath()%>/index.html">
+                <img src="<%=request.getContextPath()%>/static/img/logo.gif" alt=""
                 /></a>
             <span>我的购物车</span>
         </div>
         <div class="header-right">
             <h3>欢迎<span>张总</span>光临尚硅谷书城</h3>
             <div class="order"><a href="../order/order.html">我的订单</a></div>
-            <div class="destory"><a href="../../index.html">注销</a></div>
+            <div class="destory"><a href="<%=request.getContextPath()%>/index.html">注销</a></div>
             <div class="gohome">
-                <a href="../../index.html">返回</a>
+                <a href="<%=request.getContextPath()%>/index.html">返回</a>
             </div>
         </div>
     </div>
 </div>
 
 <div id="main">
-    <h1>你的订单已结算，订单号为:<span class="oid">546845626455846</span></h1>
+    <h1>你的订单已结算，订单号为:<span class="oid" style="color: hotpink">${orders.oid}</span></h1>
 </div>
 
 <div id="bottom">

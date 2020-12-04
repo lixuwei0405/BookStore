@@ -80,7 +80,7 @@
             <div class="footer-right">
                 <div>共<span>${sessionScope.cart.totalCount}</span>件商品</div>
                 <div class="total-price">总金额<span>${sessionScope.cart.totalAmount}</span>元</div>
-                <a class="pay" href="checkout.html">去结账</a>
+                <a class="pay" href="${pageContext.request.contextPath}/orders?action=createOrders">去结账</a>
             </div>
         </div>
     </div>
